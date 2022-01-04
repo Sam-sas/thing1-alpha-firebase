@@ -1,0 +1,349 @@
+/*
+* Safety Orange: #FF6000
+* Dodger Blue: #008EFF
+* Davys Grey: #4C4C4C
+* Canary: #FFCB47
+* Eerie Black: #1b1b1b
+*/ 
+
+@font-face {
+  font-family: 'Oswald';
+  src: local('Oswald-regular'), url(./fonts/Oswald-Regular.ttf) format('truetype');
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+
+/*Global items*/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'lato', sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+}
+
+.requestmerchandise, .viewprojects, .chat, .account, .sitesettings, .neworder {
+  /* display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center; */
+  font-size: 1.2rem;
+}
+
+body .btn-primary {
+  background-color: #008EFF;
+  border-color: #008EFF;
+  border-radius: 30px;
+}
+
+body .card {
+  border: none;
+}
+
+body ul {
+  padding-left: 0;
+}
+
+.orange {
+  background-color: #FF6000 !important;
+  border-color: #FF6000 !important;
+}
+
+/*Landing Page*/
+.landing-page {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  flex: 1;
+  height: 91vh;
+  background-image: url('../src/img/landing-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: 5%;
+  box-shadow: inset 0 0 0 1000px rgba(9, 54, 92, 0.7);
+}
+
+.logo-container, .logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.logo-container .slogan {
+  color: white;
+  font-size: 1.5em;
+  font-family: 'Kalam', cursive;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.login-sign-up-landing-container {
+  background-color: dodgerblue;
+  border-radius: 50px 0 0 0;
+}
+
+.landing-page button {
+  border-radius: 50px 0 0 0;
+  width: 100vw;
+  height: 10vh;
+  color: white;
+  font-size: 1.5em;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.login-sign-up-landing-container .login-btn {
+  background-color: dodgerblue;
+  position: relative;
+}
+
+.login-sign-up-landing-container .signup-btn {
+  background-color: #FF6000;
+}
+
+.landing-page .btn-primary {
+  border-color: transparent;  
+}
+
+.landing-page .btn-primary:active, .landing-page .btn-primary:active:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.landing-page .login-btn:active {
+  background-color: dodgerblue;
+}
+
+.landing-page .signup-btn:active {
+  background-color: #FF6000;
+}
+
+/*login / signup pages*/
+.decorative-div-blue {
+  position: absolute;
+  z-index: 2;
+  width: 100vw;
+  height: 40vh;
+  top: 20px;
+  background-color: #008EFF;
+  border-radius: 0 0 0 50%;
+}
+
+.login-signup-container, .profile-container {
+  background-color: #f0f0f0;
+  height: 100vh;
+  z-index: 1;
+}
+
+.link-btns-container {
+  background-color: #008EFF;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 20px;
+  z-index: 5;
+}
+
+.previous-btn-container {
+  z-index: 999;
+}
+
+.previous-icon {
+  height: 25px;
+  width: 25px;
+}
+
+.login-signin-links-container {
+  display: flex;
+  padding-left: 35px;
+  padding-bottom: 10px;
+  z-index: 5;
+}
+
+.login-signin-links-container .btn-primary {
+  font-size: .8em;
+  margin-right: 20px;
+}
+
+.login-signin-links-container #signup-page-signup {
+  background-color: #FF6000;
+}
+
+.login-signin-links-container #login-page-login {
+  background-color: #FF6000;
+}
+
+.login-signup-container .card {
+  background-color: transparent;
+  z-index: 2;
+}
+
+.group-container {
+  padding: 20px 20px 0 20px;
+  border-radius: 30px;
+  background-color: white;
+  z-index: 3;
+}
+
+.logo-container-login-signup .logo {
+  width: inherit;
+}
+
+.group-container .form-control {
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 0;
+}
+
+.form-container .long-btn {
+  padding: 10px 0;
+}
+
+.long-btn .forgot-password, .long-btn a {
+  text-decoration: none;
+  color: white;
+}
+
+/*Account page*/
+.account-page .btn-primary {
+  position: absolute;
+  top: 20px;
+  background-color: transparent;
+  border-color: transparent;
+  z-index: 999;
+}
+
+.account-page {
+  width: inherit;
+}
+
+.background-image, .profile-background-image {
+  border-radius: 0 0 50px 0;
+}
+
+.profile-top-level-container {
+  padding: 20px;
+}
+
+/*search and listing page*/
+/* search and listing page */
+.searchListing, .searchBarActions,
+.searchBar, .searchBarActions, .filterOptions, .expertsFound, 
+.expertsByCategory, .expertImmediateInformation, 
+.expertName, #searchLogo {
+  display: flex;
+}
+
+.search-list-card .card-body {
+  padding: 0;
+}
+
+.searchBarActions {
+  flex-direction: row;
+}
+
+.returnBack {
+  margin-left: 5px;
+}
+
+.searchBarActions {
+  align-items: center;
+}
+
+#categorySearch {
+  background-color: dodgerblue;
+  border: none;
+  border: 0px solid;
+  border-radius: 20px;
+  padding-left: 10px;
+  margin: 0 10px;
+
+  width: 200px;
+  font-size: .9em;
+}
+
+.searchBar textarea:focus, 
+.searchBar input:focus, 
+.searchBar textarea:active, 
+.searchBar input:active {
+  outline: none;
+  color: white;
+}
+
+::placeholder {
+  color: white;
+}
+
+.filterOptions .button {
+  border-radius: 20px;
+  padding: 5px 30px;
+  border: 2px solid #FF6000;
+  background-color: #fff;
+  color: #FF6000;
+  font-size: .9em;
+  font-weight: bold;
+  margin:10px 15px;
+}
+
+.filterOptions {
+  justify-content: center;
+}
+
+.searchListing {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.expertsFound {
+  list-style: none;
+  flex-direction: column;
+  width:100vw; 
+}
+
+.expertsByCategory {
+  padding: 30px 30px 30px 0;
+  justify-content: space-between;
+}
+
+.expertImage {
+  padding: 20px;
+}
+
+.expertImmediateInformation {
+  flex-direction: column;
+}
+
+.expertsFound li {
+  width: 100%;
+  border: 1px solid #008EFF;
+  background-color: black;
+  color: white;
+}
+
+.expertImage img {
+  height: 60px;
+  width: 60px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 2px solid #FF6000;
+}
+
+.star svg {
+  fill: #fecb46;
+}
+
+
+@media (max-width: 800px) {
+  body, html {
+      height: 100vh;
+      width: 100%;
+  }
+}
