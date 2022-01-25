@@ -13,10 +13,10 @@ export default function LandingPage() {
                 <p className='slogan'>Find Your Niche</p>
             </div>
             <div className='login-sign-up-landing-container'>
-                <Link to='/login'>
+                <Link to='/sign-in'>
                     <Button className='login-btn'>Login</Button>
                 </Link>
-                <Link to='/signup'>
+                <Link to='/sign-up'>
                     <Button className='signup-btn'>Sign Up</Button>
                 </Link>
             </div>

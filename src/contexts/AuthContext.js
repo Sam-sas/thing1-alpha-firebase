@@ -1,5 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { auth } from '../firebase'
+import { db, storage } from '../firebase'
+import { collection, query, where, getDocs } from "firebase/firestore"
 
 const AuthContext = React.createContext();
 
@@ -9,7 +11,7 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
     const [currentUser, setCurrentUser] = useState();
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);    
 
     /* To login or sign up to the server; can change this to any server needed without loss of functionality elsewhere */
     function signup(email, password) {

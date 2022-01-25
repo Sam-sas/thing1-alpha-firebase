@@ -33,7 +33,7 @@ export default function Signup() {
 
     return (
         <>
-            <div className="login-signup-container">
+            <div className="validation-form-container">
                 <div className="decorative-div-blue"></div>
                 <div className='link-btns-container'>
                     <div className='previous-btn-container'>
@@ -45,14 +45,14 @@ export default function Signup() {
                     </div>
                     <div className="login-signin-links-container">
                         <div className='sign-in-btn'>
-                            <Link to='/login'>
+                            <Link to='/sign-in'>
                                 <Button className='login-btn' id="signup-page-login">
                                     SIGN IN
                                 </Button>
                             </Link>
                         </div>
                         <div className='sign-up-btn'>
-                            <Link to='/signup'>
+                            <Link to='/sign-up'>
                                 <Button className='signup-btn' id="signup-page-signup">
                                     SIGN UP
                                 </Button>

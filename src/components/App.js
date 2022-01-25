@@ -12,6 +12,7 @@ import ExpertValidationForm from "./authForms/ExpertValidationForm"
 import Login from "./authForms/Login";
 import ForgotPassword from "./authForms/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
+import AppWrapper from "./AppWrapper";
 //pages
 import Dashboard from "./Dashboard";
 import SearchListing from '../pages/SearchListing'
@@ -21,7 +22,7 @@ import About from '../pages/About';
 import Contact from '../pages/Contact';
 import CalendarPage from '../pages/CalendarPage';
 import LandingPage from '../pages/LandingPage';
-// import ViewProjects from '../pages/ViewProjects';
+
 
 
 function App() {
@@ -30,9 +31,10 @@ function App() {
       <AuthProvider>
         <Navigation />  
         <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
+          <Route exact path="/" component={AppWrapper} />
+          <Route path="/sign-up" component={Signup} />
+          <Route path="/sign-in" component={Login} />
+          <Route path="/welcome" component={LandingPage} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
           <PrivateRoute path="/update-profile" component={UpdateProfile} />
           <PrivateRoute path="/sign-up-validation-form" component={ExpertValidationForm} />

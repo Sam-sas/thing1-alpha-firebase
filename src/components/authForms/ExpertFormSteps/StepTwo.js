@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function WelcomeStep() {
+export default function StepTwo() {
   return <div></div>;
 }

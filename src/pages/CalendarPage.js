@@ -1,19 +1,47 @@
-import React, {useState} from 'react'
-import {Form, Button, Card, Alert } from 'react-bootstrap'
-
+import React, { useState, useEffect } from "react"
+import { useAuth } from '../contexts/AuthContext'
+import moment from 'moment'
+import { db } from '../firebase'
+import { collection, query, where, getDocs } from "firebase/firestore"
 import Calendar from 'react-calendar'
-import 'react-calendar/dist/Calendar.css';
 
 export default function CalendarPage() {
-    const [value, onChange] = useState(new Date());
+    const [date, setDate] = useState(new Date())
+    const [sessions, setSessions] = useState([]);
+    const [profileUser, setProfileUser] = useState();
+    const { currentUser } = useAuth();
+
+    const changeDate = (e) => {
+        setDate(e)
+      }
+
+    const returnData = (user) => {
+        if(user) {
+            return (
+                <>
+                    <div className='calendar-page'>
+                        <div className="thing1-logo">
+                            <img id="calendar-logo" src="../img/thing1-logo-hi-res.png" alt="thing1 logo"/>
+                        </div>
+                        {/* {sessionsData} */}
+                        <Calendar
+                            onChange={changeDate}
+                            value={date}
+                        />
+                        {/* <div>
+                            <p>Current selected date is <b>{moment(date).format('MMMM Do YYYY')}
+                            </b></p>
+                        </div> */}
+                    </div>
+                </>
+            )
+        }
+    }
 
 
     return (
-        <div className='mt-5'>
-            <Calendar
-             onChange={onChange}
-             value={value}
-              />
+        <div>
+           {returnData(currentUser)} 
         </div>
     )
 }

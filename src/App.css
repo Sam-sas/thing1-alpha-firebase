@@ -6,20 +6,22 @@
 * Eerie Black: #1b1b1b
 */ 
 
-@font-face {
-  font-family: 'Oswald';
-  src: local('Oswald-regular'), url(./fonts/Oswald-Regular.ttf) format('truetype');
-}
-
+/*
+* Kalam: splashy and uppercase
+* Open sans: body and sentence case
+* Oswold: titles
+* Montserrat: numbers only
+*/
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap');
 /*Global items*/
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .App {
@@ -27,18 +29,24 @@
   flex-direction: column;
 }
 
-.requestmerchandise, .viewprojects, .chat, .account, .sitesettings, .neworder {
-  /* display: flex;
-  height: 90vh;
-  align-items: center;
-  justify-content: center; */
-  font-size: 1.2rem;
-}
-
 body .btn-primary {
   background-color: #008EFF;
   border-color: #008EFF;
   border-radius: 30px;
+}
+
+h1, h2, h3 {
+  font-family: 'Oswold', sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+p {
+  color: #4C4C4C;
+  font-size: 1.1em;
 }
 
 body .card {
@@ -54,13 +62,18 @@ body ul {
   border-color: #FF6000 !important;
 }
 
+.blue {
+  background-color: #008EFF !important;
+  border-color: #008EFF !important;
+}
+
 /*Landing Page*/
 .landing-page {
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
   flex: 1;
-  height: 91vh;
+  height: 90vh;
   background-image: url('../src/img/landing-background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -131,12 +144,12 @@ body ul {
   z-index: 2;
   width: 100vw;
   height: 40vh;
-  top: 20px;
+  top: 0px;
   background-color: #008EFF;
   border-radius: 0 0 0 50%;
 }
 
-.login-signup-container, .profile-container {
+.validation-form-container, .profile-container {
   background-color: #f0f0f0;
   height: 100vh;
   z-index: 1;
@@ -145,7 +158,7 @@ body ul {
 .link-btns-container {
   background-color: #008EFF;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   padding: 0 20px;
   z-index: 5;
 }
@@ -179,8 +192,9 @@ body ul {
   background-color: #FF6000;
 }
 
-.login-signup-container .card {
+.validation-form-container .card {
   background-color: transparent;
+  margin-top: 30px;
   z-index: 2;
 }
 
@@ -201,7 +215,7 @@ body ul {
   border-radius: 0;
 }
 
-.form-container .long-btn {
+.long-btn {
   padding: 10px 0;
 }
 
@@ -209,6 +223,54 @@ body ul {
   text-decoration: none;
   color: white;
 }
+
+.form-check-label {
+  color: #4C4C4C;
+}
+
+.form-button-submissions-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.form-button-submissions-container button {
+  margin: 10px;
+}
+
+.validation-form-container.exp-form-container {
+  margin-top: 0;
+}
+
+/*Dashboard v1.0*/
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+#welcome-logo {
+  border-radius: 50%;
+  border: 30px solid #FF6000;
+  margin: 20px;
+  width: 90vw;
+  height: 40%;
+}
+
+#welcome-logo .logo {
+  border-radius: 50%;
+  border: 30px solid #008EFF;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+#welcome-logo .logo img {
+  height: 120px;
+  padding: 10px;
+}
+
 
 /*Account page*/
 .account-page .btn-primary {
@@ -229,6 +291,14 @@ body ul {
 
 .profile-top-level-container {
   padding: 20px;
+}
+
+.profile-items-container {
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 10px;
+  margin: 10px;
+  padding-top: 10px;
+   background-color: #fff;
 }
 
 /*search and listing page*/
@@ -338,6 +408,70 @@ body ul {
 
 .star svg {
   fill: #fecb46;
+}
+
+/*Calendar*/
+.calendar-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #008EFF;
+}
+
+.thing1-logo {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-radius: 60px 0 0 60px;
+  width: 100%;
+}
+
+#calendar-logo {
+  height: 100px;
+  background-color: white;
+
+}
+
+.react-calendar {
+  background: #008EFF;
+  width: 100vw;
+  border-color: transparent;
+  line-height: inherit;
+  margin-top: 1em;
+  margin: 5px;
+}
+
+.react-calendar .abbr[data-bs-original-title], abbr[title] {
+  text-decoration: none;
+}
+
+.react-calendar__tile {
+  padding: 35px 10px;
+}
+
+.react-calendar button {
+  border-radius: 30px;
+
+}
+
+.react-calendar__month-view__days__day--weekend, 
+.react-calendar .abbr[data-bs-original-title], abbr[title],
+.react-calendar button
+{
+  color: white;
+}
+
+.react-calendar__tile--active, .react-calendar__tile--now,
+.react-calendar__tile--active .react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus
+  {
+  background-color: transparent;
+}
+
+.react-calendar__tile--active abbr {
+  background-color:#FF6000;
+  border-radius: 50%;
+  padding: 10px 10px;
 }
 
 

@@ -6,15 +6,12 @@ import { db, storage } from '../firebase'
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { BsArrowLeft } from "react-icons/bs"
 
-
-
-//Account Page, where adjustments can be made, people added per dealer.
 function Account() {
 const { currentUser } = useAuth();
 const expertsCollectionRef = collection(db, 'experts');
 const [loading, setLoading] = useState(false);
 const [profileUser, setProfileUser] = useState([]);
-const [url, setUrl] = useState('about/blank')
+const [url, setUrl] = useState('../../img/blank-profile-picture-973460.png')
 
 useEffect(() => {
     if  (currentUser) {
@@ -34,8 +31,7 @@ const getCurrentUser = async (uid) => {
 
 const checkImg = (ref, user)  => {
     if (ref) {
-        defaultImage();
-        if(user.expertImg == '') {
+        if(user.expertImg === undefined || user.expertImg === '') {
             return url;
         } else {
             setUrl(user.expertImg);
@@ -44,12 +40,62 @@ const checkImg = (ref, user)  => {
     return url;
 }
 
-const defaultImage = async () => {
-    await storage.ref("staticFiles").child('Placeholder_person.png').getDownloadURL()
-    .then((url) => {
-        setUrl(url);
-    })
-    return url;
+const checkSession = (user) => {
+    if (user.upcomingSessions) {
+        return (
+            <div>
+                <p>You have upcoming Sessions</p>
+            </div>
+        )
+    }
+
+    return (
+        <div>
+            <p className='text-center'>No upcoming sessions</p>
+        </div>
+        
+    )
+}
+
+const checkExpertFavorites = (user) => {
+    if (user.favoriteExperts) {
+        return (
+            <div>
+                <p>Saved Experts</p>
+            </div>
+        )
+    }
+
+    return (
+        <div>
+            <p className='text-center'>No Saved Experts</p>
+        </div>
+        
+    )
+}
+
+const checkReviews = (user) => {
+    if (user.isExpert) {
+        return (
+            <div>
+                <p>These are your current Reviews</p>
+            </div>
+        )
+    }
+    if (user.reviewsGiven) {
+        return (
+            <div>
+                <p>Reviews Written</p>
+            </div>
+        )
+    }
+
+    return (
+        <div>
+            <p className='text-center'>No Reviews</p>
+        </div>
+        
+    )
 }
 
 const returnData = (user) => {
@@ -64,6 +110,18 @@ const returnData = (user) => {
                     <Button className="long-btn w-100">
                         <Link to="/update-profile">Update Profile</Link>
                     </Button>
+                </div>
+                <div className='profile-items-container sessions-container'>
+                    <h3>Upcoming Sessions</h3>
+                        {checkSession(profileUser)}
+                </div>
+                <div className='profile-items-container saved-expert-container'>
+                    <h3>Favorite Experts</h3>
+                        {checkExpertFavorites(profileUser)}
+                </div>
+                <div className='profile-items-container saved-expert-container'>
+                    <h3>Reviews</h3>
+                        {checkReviews(profileUser)}
                 </div>
             </>
         )

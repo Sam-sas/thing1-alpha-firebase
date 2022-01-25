@@ -28,7 +28,7 @@ export default function ForgotPassword() {
 
     return (
         <>
-            <div className="login-signup-container">
+            <div className="validation-form-container">
                 <div className="decorative-div-blue"></div>
                 <div className='link-btns-container'>
                     <div className='previous-btn-container'>
@@ -40,14 +40,14 @@ export default function ForgotPassword() {
                     </div>
                     <div className="login-signin-links-container">
                         <div className='sign-in-btn'>
-                            <Link to='/login'>
+                            <Link to='/sign-in'>
                                 <Button className='login-btn' id="forgot-password-page-login">
                                     SIGN IN
                                 </Button>
                             </Link>
                         </div>
                         <div className='sign-up-btn'>
-                            <Link to='/signup'>
+                            <Link to='/sign-up'>
                                 <Button className='signup-btn' id="forgot-password-page-signup">
                                     SIGN UP
                                 </Button>

@@ -72,53 +72,54 @@ export default function ExpertValidationForm() {
 
     return (
         <>
-            <Button className='w-100 mt-3'>Previous</Button>
+            <div className='validation-form-container'>
+                <div className="decorative-div-blue"></div>
 
-            <Card>
-                <Card.Body>
-                    <h2 className='text-center mb-4'>Expert Validation Form</h2>
-                    {error && <Alert variant='danger'>{error}</Alert>}
-                    <Form>
-                        <Form.Group id="firstName">
-                            <Form.Control type='name' 
-                                placeholder='First Name'
-                                onChange={(event) => {
-                                setExpFirstName(event.target.value);}} />
-                        </Form.Group>
-                        <Form.Group id="lastName">
-                            <Form.Control type='name'
-                                placeholder='Last Name'
-                                onChange={(event) => {
-                                setExpLastName(event.target.value);}} />
-                        </Form.Group>
-                        <Form.Group id="phoneNumber">
-                            <Form.Control type='tel' 
-                                placeholder='Phone Number'
-                                onChange={(event) => {
-                                    setExpPhone(event.target.value);}} />
-                        </Form.Group>
-                        {/* <Form.Group id="exoertFormEmail">
-                            <Form.Control type='email' 
-                                placeholder='Email'
-                                onChange={(event) => {
-                                    setExpEmail(event.target.value);}} />
-                        </Form.Group> */}
-                        <Form.Group>
-                            <Form.Check type="switch" id="custom-switch" label="Email"
-                                onChange={() => togglePreference("email")}/>
-                            <Form.Check type="switch" id="custom-switch" label="Text"
-                                onChange={() => togglePreference("text")}/>
-                            <Form.Check type="switch" id="custom-switch" label="App Notifications"
-                                onChange={() => togglePreference("app Notifications")}/>
-                        </Form.Group>
-                    </Form>
-                </Card.Body>
-            </Card>
-            <div className='w-100 text-center mt-2'>
-                <Button disabled={loading} type="submit" 
-                    className='w-100 mt-3' onClick={handleSubmit}>Skip for now</Button>
-                <Button disabled={loading} type="submit" className='w-100 mt-3' onClick={handleSubmit}>Next</Button>
+                <Card>
+                    <Card.Body>
+                        {error && <Alert variant='danger'>{error}</Alert>}
+                        <Form className="form-container">
+                            <div className="group-container">
+                            <p className='text-center'>Tell us a little about yourself.</p>
+                            <Form.Group id="firstName" className="form-group-landing mb-5 mt-3">
+                                <Form.Control type='name' 
+                                    placeholder='First Name'
+                                    onChange={(event) => {
+                                    setExpFirstName(event.target.value);}} />
+                            </Form.Group>
+                            <Form.Group id="lastName" className="form-group-landing mb-5 mt-3">
+                                <Form.Control type='name'
+                                    placeholder='Last Name'
+                                    onChange={(event) => {
+                                    setExpLastName(event.target.value);}} />
+                            </Form.Group>
+                            <Form.Group id="phoneNumber" className="form-group-landing mb-5 mt-3">
+                                <Form.Control type='tel' 
+                                    placeholder='Phone Number'
+                                    onChange={(event) => {
+                                        setExpPhone(event.target.value);}} />
+                            </Form.Group>
+                            <Form.Group className="form-group-landing mb-5 mt-3">
+                                <Form.Check type="switch" id="custom-switch" label="Email"
+                                    onChange={() => togglePreference("email")}/>
+                                <Form.Check type="switch" id="custom-switch" label="Text"
+                                    onChange={() => togglePreference("text")}/>
+                                <Form.Check type="switch" id="custom-switch" label="App Notifications"
+                                    onChange={() => togglePreference("app Notifications")}/>
+                            </Form.Group>
+                            <div className='logo-container-login-signup'>
+                                    <div className="logo"><img className='w-50' src="./img/thing1-logo-hi-res.png" alt="Thing1 logo" /></div>
+                                </div>
+                            </div>
+                        </Form>
+                    </Card.Body>
+                </Card>
+
+                <div className='text-center mt-2 form-button-submissions-container'>
+                    <Button disabled={loading} type="submit" className='w-100 mt-3' id="submit-button" onClick={handleSubmit}>Submit</Button>
+                </div>
             </div>
+            
         </>
     )
 }
