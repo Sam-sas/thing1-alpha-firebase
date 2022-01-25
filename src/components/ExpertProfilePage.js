@@ -9,8 +9,6 @@ export default function ExpertProfilePage(props) {
     const expert = props.location.state;
     const [url, setUrl] = useState('about/blank');
 
-
-
     const starRating = (reviewRating) => {
         if(reviewRating < 1) {
           return <p>Currently Unreviewed</p>
