@@ -3,7 +3,7 @@ import { BrowserRouter as Route } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import LandingPage from '../pages/LandingPage';
 import React from 'react'
-import Dashboard from './Dashboard';
+import Dashboard from '../pages/Dashboard';
 
 export default function AppWrapper() {
     const { currentUser } = useAuth();

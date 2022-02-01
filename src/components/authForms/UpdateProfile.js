@@ -246,92 +246,97 @@ export default function UpdateProfile() {
         return (
             <>
                 {/* login credential card */}
-                <Card> 
-                    <Card.Body>
-                        <h2 className='text-center mb-4'>Change Your Login</h2>
-                        {error && <Alert variant='danger'>{error}</Alert>}
-                        <Form onSubmit={handleAuthSubmit}>
-                            <Form.Group id="email">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type='email' ref={emailRef} required defaultValue={currentUser.email} />
-                            </Form.Group>
-                            <Form.Group id="password">
-                                <Form.Label>Password (leave blank to keep the same)</Form.Label>
-                                <Form.Control type='password' ref={passwordRef} />
-                            </Form.Group>
-                            <Form.Group id="password-confirm">
-                                <Form.Label>Password Confirmation</Form.Label>
-                                <Form.Control type='password' ref={passwordConfirmRef} defaultValue={currentUser.password} />
-                            </Form.Group>
-                            <Button disabled={loading} type="submit" className='w-100 mt-3'>Update</Button>
-                        </Form>
-                    </Card.Body>
-                </Card>
-                {/* update non-admin related items card */}
-                <Card>
-                    <Card.Body>
-                        <h2 className='text-center mb-4'>Update Profile</h2>
-                        {error && <Alert variant='danger'>{error}</Alert>}
-                        <Form onSubmit={handleDbUserSubmit}>
-                            <Form.Group id="updateFirstName">
-                                <Form.Label>First Name</Form.Label>
-                                <Form.Control type='name' 
+                <div className='validation-form-container'>
+                    <div className="decorative-div-blue"></div>
+                    <Card> 
+                        <Card.Body>
+                            {error && <Alert variant='danger'>{error}</Alert>}
+                            <Form onSubmit={handleAuthSubmit} className="form-container">
+                                <div className="group-container">
+                                    <h2 className='text-center mb-4'>Change Your Login</h2>
+                                    <Form.Group id="email" className="form-group-landing mb-3">
+                                        <Form.Label>Email</Form.Label>
+                                        <Form.Control type='email' ref={emailRef} required defaultValue={currentUser.email} />
+                                    </Form.Group>
+                                    <Form.Group id="password" className="form-group-landing mb-3">
+                                        <Form.Label>Password (leave blank to keep the same)</Form.Label>
+                                        <Form.Control type='password' ref={passwordRef} />
+                                    </Form.Group>
+                                    <Form.Group id="password-confirm" className="form-group-landing mb-3">
+                                        <Form.Label>Password Confirmation</Form.Label>
+                                        <Form.Control type='password' ref={passwordConfirmRef} defaultValue={currentUser.password} />
+                                    </Form.Group>
+                                    <Button disabled={loading} type="submit" className='w-100 mt-3 mb-3 update-button'>Update</Button>
+                                </div>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                    {/* update non-admin related items card */}
+                    <Card>
+                        <Card.Body>
+                            <h2 className='text-center mb-4'>Update Profile</h2>
+                            {error && <Alert variant='danger'>{error}</Alert>}
+                            <Form onSubmit={handleDbUserSubmit}>
+                                <Form.Group id="updateFirstName">
+                                    <Form.Label>First Name</Form.Label>
+                                    <Form.Control type='name' 
+                                        onChange={(event) => {
+                                            setExpFirstName(event.target.value)}} 
+                                        defaultValue={initialData.firstName} />
+                                </Form.Group>
+                                <Form.Group id="updateLastName">
+                                    <Form.Label>Last Name</Form.Label>
+                                    <Form.Control type='name'
+                                        onChange={(event) => {
+                                            setExpLastName(event.target.value)}}
+                                        defaultValue={initialData.lastName} />
+                                </Form.Group>
+                                <Form.Group id="updatePhoneNum">
+                                    <Form.Label>Phone Number</Form.Label>
+                                    <Form.Control type='tel'
                                     onChange={(event) => {
-                                        setExpFirstName(event.target.value)}} 
-                                    defaultValue={initialData.firstName} />
-                            </Form.Group>
-                            <Form.Group id="updateLastName">
-                                <Form.Label>Last Name</Form.Label>
-                                <Form.Control type='name'
-                                    onChange={(event) => {
-                                        setExpLastName(event.target.value)}}
-                                    defaultValue={initialData.lastName} />
-                            </Form.Group>
-                            <Form.Group id="updatePhoneNum">
-                                <Form.Label>Phone Number</Form.Label>
-                                <Form.Control type='tel'
-                                 onChange={(event) => {
-                                    setExpPhone(event.target.value)}}
-                                defaultValue={initialData.phoneNumber} />
-                            </Form.Group>
-                            <Card.Body>
-                                <input type="file" onChange={(e)=>{setProfileImage(e.target.files[0])}} />
-                                <progress value={imgProgress} max="100" />
-                            </Card.Body>                          
-                            <Button disabled={loading} type="submit" className='w-100 mt-3'>Update</Button>
-                        </Form>
-                    </Card.Body>
-                </Card>
-                <Card>
-                    <Card.Body>
-                        {expertCheck(initialData.isExpert)}
-                        {error && <Alert variant='danger'>{error}</Alert>}
-                        <Form onSubmit={handleDbExpertSubmit}>
-                            <Form.Group id="updateExpCategories">
-                                <Form.Label>Categories</Form.Label>
-                                    <Form.Control type="text" defaultValue={initialData.expertCategories} onChange={pushToLocalArray} />
-                                    <Button onClick={addToCategoryArray}>Add Category</Button>
-                            </Form.Group>
-                            <Form.Group id="updateTitle">
-                                <Form.Label>Expertise Title</Form.Label>
-                                <Form.Control type='title' defaultValue={initialData.expertTitle} />
-                            </Form.Group>
-                            <Form.Group id="updateCost">
-                                <Form.Label>Cost of Teaching</Form.Label>
-                                <Form.Control type='number' defaultValue={initialData.expertCost} />
-                            </Form.Group>
-                            <Card.Body>
-                                <input type="file" multiple onChange={addCredentialFiles} />
-                                <Button onClick={uploadCredentialFiles}>Upload</Button>
-                                <progress value={credentialProgress} max="100" />
-                            </Card.Body>
-                            <Button disabled={loading} type="submit" className='w-100 mt-3'>Update</Button>
-                        </Form>
-                    </Card.Body>
-                </Card>
-                <div className='w-100 text-center mt-2'>
-                   <Link to="/profile-page">Return to profile</Link>
-                </div>
+                                        setExpPhone(event.target.value)}}
+                                    defaultValue={initialData.phoneNumber} />
+                                </Form.Group>
+                                <Card.Body>
+                                    <input type="file" onChange={(e)=>{setProfileImage(e.target.files[0])}} />
+                                    <progress value={imgProgress} max="100" />
+                                </Card.Body>                          
+                                <Button disabled={loading} type="submit" className='w-100 mt-3'>Update</Button>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                    <Card>
+                        <Card.Body>
+                            {expertCheck(initialData.isExpert)}
+                            {error && <Alert variant='danger'>{error}</Alert>}
+                            <Form onSubmit={handleDbExpertSubmit}>
+                                <Form.Group id="updateExpCategories">
+                                    <Form.Label>Categories</Form.Label>
+                                        <Form.Control type="text" defaultValue={initialData.expertCategories} onChange={pushToLocalArray} />
+                                        <Button onClick={addToCategoryArray}>Add Category</Button>
+                                </Form.Group>
+                                <Form.Group id="updateTitle">
+                                    <Form.Label>Expertise Title</Form.Label>
+                                    <Form.Control type='title' defaultValue={initialData.expertTitle} />
+                                </Form.Group>
+                                <Form.Group id="updateCost">
+                                    <Form.Label>Cost of Teaching</Form.Label>
+                                    <Form.Control type='number' defaultValue={initialData.expertCost} />
+                                </Form.Group>
+                                <Card.Body>
+                                    <input type="file" multiple onChange={addCredentialFiles} />
+                                    <Button onClick={uploadCredentialFiles}>Upload</Button>
+                                    <progress value={credentialProgress} max="100" />
+                                </Card.Body>
+                                <Button disabled={loading} type="submit" className='w-100 mt-3'>Update</Button>
+                            </Form>
+                        </Card.Body>
+                    </Card>
+                    <div className='w-100 text-center mt-2'>
+                    <Link to="/profile-page">Return to profile</Link>
+                    </div>
+                -</div>
             </>
         )
 }
